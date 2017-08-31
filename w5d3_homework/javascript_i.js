@@ -41,11 +41,35 @@ function sumOfPrimes(n) {
   }
   return sum;
 }
+
 function toTitle(name) {
-  "Mx. ${name} Jingleheimer Schmidt";
+  return `Mx. ${name} Jingleheimer Schmidt`;
 }
 
-function titleize(names, toTitle) {
-  names.map((name) => toTitle(name));
-  return names;
+function titleize(names, callback) {
+  let originalNames = names
+  let titles = originalNames.map((name) => callback(name));
+  return titles;
+}
+
+var Elephant = function Elephant(name, height, tricks) {
+  this.name = name;
+  this.height = height;
+  this.tricks = tricks;
+}
+
+Elephant.prototype.trumpet = function() {
+  console.log (`${this.name} the elephant goes 'phrRRRRRRRRRRR!!!!!!!`);
+};
+
+Elephant.prototype.grow = function() {
+  console.log (this.height += 12);
+};
+
+Elephant.prototype.addTrick(trick) = function() {
+  this.trick.push(trick);
+};
+
+Elephant.prototype.play = function() {
+  console.log (`$(this.name) is $()`)
 }

@@ -114,11 +114,33 @@ class DynamicProgramming
   end
 
   def knapsack(weights, values, capacity)
-
+    knapsack_cache = knapsack_table(weights, values, capacity)
+    knapsack_cache[capacity].last
   end
 
   # Helper method for bottom-up implementation
   def knapsack_table(weights, values, capacity)
+    knapsack_cache = {
+      0 => Array.new(weights.length, 0)
+    }
+
+    (1..capacity).each do |c|
+      knapsack_cache[c] = c == weights[0] ? [values[0]] : [0]
+    end
+
+    (1...weights.length).each do |col|
+      (1..capacity).each do |c|
+        current_weight = weights[col]
+        if c < current_weight
+          knapsack_cache[c][col] = knapsack_cache[c][col - 1]
+        else
+          new_weight = knapsack_cache[c - current_weight][col - 1] + current_weight
+          knapsack_cache[c][col] = [new_weight, knapsack_cache[c][col - 1]].max
+        end
+      end
+    end
+
+    knapsack_cache
 
   end
 

@@ -131,12 +131,11 @@ class DynamicProgramming
     (1...weights.length).each do |col|
       (1..capacity).each do |c|
         current_weight = weights[col]
-        current_value = values[col]
         if c < current_weight
           knapsack_cache[c][col] = knapsack_cache[c][col - 1]
         else
-          new_value = knapsack_cache[c - current_weight][col - 1] + current_value
-          knapsack_cache[c][col] = [new_value, knapsack_cache[c][col - 1]].max
+          new_weight = knapsack_cache[c - current_weight][col - 1] + current_weight
+          knapsack_cache[c][col] = [new_weight, knapsack_cache[c][col - 1]].max
         end
       end
     end

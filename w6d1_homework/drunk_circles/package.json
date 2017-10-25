@@ -1,8 +1,11 @@
 {
-  "name": "webpack-demo",
+  "name": "drunk_circles",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,12 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^3.5.5"
-  },
-  "dependencies": {
-    "lodash": "^4.17.4"
-  },
-  "scripts": {
-  "build": "webpack"
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1",
+    "wepback": "^1.0.0"
   }
 }
